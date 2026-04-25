@@ -1,0 +1,23 @@
+# AWS credentials — never commit these
+*.env
+.env
+secrets.py
+aws_credentials*
+
+# Large data files — only sample allowed
+*.csv
+!data/sample_retention_list.csv
+
+# Databricks
+.databricks/
+*.log
+*.lvdash
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
