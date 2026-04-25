@@ -1,0 +1,663 @@
+{
+  "datasets": [
+    {
+      "name": "eb3cb81b",
+      "displayName": "Platform Customer Metrics Overview Summary",
+      "queryLines": [
+        "-- Title: Platform KPIs\r\n",
+        "-- Visualization: Counter (4 separate counter tiles)\r\n",
+        "\r\n",
+        "SELECT\r\n",
+        "    COUNT(DISTINCT customer_unique_id)                        AS total_customers,\r\n",
+        "    ROUND(SUM(monetary_value), 2)                            AS total_revenue,\r\n",
+        "    ROUND(SUM(CASE WHEN segment IN ('At-Risk','Lost')\r\n",
+        "          THEN monetary_value END), 2)                       AS revenue_at_risk,\r\n",
+        "    SUM(CASE WHEN segment IN ('At-Risk','Lost')\r\n",
+        "        THEN 1 ELSE 0 END)                                   AS customers_at_risk\r\n",
+        "FROM brazilian.gold.churn_segments;\r\n",
+        "\r\n",
+        "\r\n",
+        "\r\n"
+      ]
+    },
+    {
+      "name": "14bf687f",
+      "displayName": "Customer Distribution Overview by Segment",
+      "queryLines": [
+        "-- Title: Customer Count by Segment\r\n",
+        "-- Visualization: Bar Chart | X: segment | Y: customers\r\n",
+        "\r\n",
+        "SELECT\r\n",
+        "    segment,\r\n",
+        "    customers,\r\n",
+        "    total_spend,\r\n",
+        "    avg_ltv,\r\n",
+        "    pct_of_total\r\n",
+        "FROM brazilian.gold.segment_summary\r\n",
+        "ORDER BY customers DESC;"
+      ]
+    },
+    {
+      "name": "0e950b81",
+      "displayName": "Customer Satisfaction Analysis by Market Segment",
+      "queryLines": [
+        "-- Title: Satisfaction Score by Segment (Key Finding)\r\n",
+        "-- Visualization: Bar Chart | X: segment | Y: avg_review_score\r\n",
+        "-- Order: avg_review_score DESC\r\n",
+        "\r\n",
+        "SELECT\r\n",
+        "    segment,\r\n",
+        "    avg_review_score,\r\n",
+        "    customers,\r\n",
+        "    avg_recency_days\r\n",
+        "FROM brazilian.gold.segment_summary\r\n",
+        "ORDER BY avg_review_score DESC;"
+      ]
+    },
+    {
+      "name": "b75a2e40",
+      "displayName": "High Priority Customers Lifetime Value Insights",
+      "queryLines": [
+        "-- Title: Top 20 At-Risk Customers by Lifetime Value\r\n",
+        "-- Visualization: Table (keep as table, no chart needed)\r\n",
+        "\r\n",
+        "SELECT\r\n",
+        "    customer_unique_id,\r\n",
+        "    segment,\r\n",
+        "    lifetime_value,\r\n",
+        "    recency_days,\r\n",
+        "    avg_review_score,\r\n",
+        "    recommended_action,\r\n",
+        "    suggested_channel,\r\n",
+        "    recovery_potential_score\r\n",
+        "FROM brazilian.gold.retention_priority\r\n",
+        "LIMIT 20;"
+      ]
+    },
+    {
+      "name": "5721d4c6",
+      "displayName": "Brazilian Customer Segments and Spending Overview",
+      "queryLines": [
+        "SELECT\r\n",
+        "    c.customer_state,\r\n",
+        "    COUNT(*)                          AS at_risk_customers,\r\n",
+        "    ROUND(SUM(c.monetary_value), 2)   AS revenue_at_risk,\r\n",
+        "    ROUND(AVG(c.monetary_value), 2)   AS avg_ltv\r\n",
+        "FROM brazilian.gold.churn_segments c\r\n",
+        "WHERE c.segment IN ('At-Risk', 'Lost')\r\n",
+        "GROUP BY c.customer_state\r\n",
+        "ORDER BY revenue_at_risk DESC\r\n",
+        "LIMIT 10;"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "509f2a85",
+      "displayName": "Chrun Retention",
+      "layout": [
+        {
+          "widget": {
+            "name": "counter_total_customers",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "eb3cb81b",
+                  "fields": [
+                    {
+                      "name": "total_customers",
+                      "expression": "`total_customers`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Total Customers",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "total_customers",
+                  "style": {
+                    "fontSize": 36
+                  },
+                  "displayName": "Total Customers"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_total_revenue",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "eb3cb81b",
+                  "fields": [
+                    {
+                      "name": "total_revenue",
+                      "expression": "`total_revenue`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Total Revenue",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "total_revenue",
+                  "style": {
+                    "fontSize": 36
+                  },
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "BRL",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  },
+                  "displayName": "Total Revenue"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 2,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_revenue_at_risk",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "eb3cb81b",
+                  "fields": [
+                    {
+                      "name": "revenue_at_risk",
+                      "expression": "`revenue_at_risk`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Revenue at Risk",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "revenue_at_risk",
+                  "style": {
+                    "fontSize": 36
+                  },
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "BRL",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 2
+                    },
+                    "significantFigures": {
+                      "type": "all"
+                    }
+                  },
+                  "displayName": "Revenue at Risk"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 2,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_customers_at_risk",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "eb3cb81b",
+                  "fields": [
+                    {
+                      "name": "customers_at_risk",
+                      "expression": "`customers_at_risk`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Customers at Risk",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "customers_at_risk",
+                  "displayName": "Customers at Risk"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 9,
+            "y": 2,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "customer-count-by-segment",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "14bf687f",
+                  "fields": [
+                    {
+                      "name": "customers",
+                      "expression": "`customers`"
+                    },
+                    {
+                      "name": "segment",
+                      "expression": "`segment`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Customer Count by Segment"
+              },
+              "mark": {
+                "colors": [
+                  "#D25959",
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "segment",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "customers",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "customers",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    },
+                    "significantFigures": {
+                      "type": "all"
+                    }
+                  },
+                  "scale": {
+                    "type": "quantitative",
+                    "reverse": false,
+                    "colorRamp": {
+                      "mode": "scheme",
+                      "scheme": "orangered"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "satisfaction-score-by-segment",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "0e950b81",
+                  "fields": [
+                    {
+                      "name": "segment",
+                      "expression": "`segment`"
+                    },
+                    {
+                      "name": "avg_review_score",
+                      "expression": "`avg_review_score`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Satisfaction Scores Across Segments"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 1
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "area",
+              "encodings": {
+                "x": {
+                  "fieldName": "segment",
+                  "axis": {
+                    "labelAngle": 0
+                  },
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "avg_review_score",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  },
+                  "axis": {
+                    "title": "Average Review Score"
+                  },
+                  "scale": {
+                    "type": "quantitative",
+                    "domain": {
+                      "min": 3.5
+                    }
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 4,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "top-20-at-risk-customers-by-lifetime-value",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b75a2e40",
+                  "fields": [
+                    {
+                      "name": "customer_unique_id",
+                      "expression": "`customer_unique_id`"
+                    },
+                    {
+                      "name": "lifetime_value",
+                      "expression": "`lifetime_value`"
+                    },
+                    {
+                      "name": "recency_days",
+                      "expression": "`recency_days`"
+                    },
+                    {
+                      "name": "avg_review_score",
+                      "expression": "`avg_review_score`"
+                    },
+                    {
+                      "name": "recovery_potential_score",
+                      "expression": "`recovery_potential_score`"
+                    }
+                  ],
+                  "filters": [
+                    {
+                      "expression": "`suggested_channel` IN (`suggested_channel`) OR TRUE"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Top 20 At-Risk Customers by Lifetime Value"
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "customer_unique_id"
+                  },
+                  {
+                    "fieldName": "lifetime_value",
+                    "format": {
+                      "type": "number-currency",
+                      "currencyCode": "BRL",
+                      "abbreviation": "none",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 2
+                      },
+                      "hideGroupSeparator": true
+                    },
+                    "contentAlignment": "center"
+                  },
+                  {
+                    "fieldName": "recency_days",
+                    "contentAlignment": "center",
+                    "style": {
+                      "type": "basic"
+                    }
+                  },
+                  {
+                    "fieldName": "avg_review_score",
+                    "contentAlignment": "center"
+                  },
+                  {
+                    "fieldName": "recovery_potential_score",
+                    "contentAlignment": "center"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 16,
+            "width": 12,
+            "height": 11
+          }
+        },
+        {
+          "widget": {
+            "name": "503f9187",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# <span style=\"text-align:center;display:block;\"><span style=\"font-size: 36px;line-height: 1.5;\">Brazilian Olist — Churn Retention Dashboard</span></span>"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "5c341ff3",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "14bf687f",
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {}
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 10,
+            "width": 6,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
