@@ -1,0 +1,51 @@
+customer_unique_id,segment,lifetime_value,recency_days,total_orders,avg_review_score,recommended_action,suggested_channel,recovery_potential_score
+0a0a92112bd4c708ca5fde585afaa872,At-Risk,13664.08,334,1,1.0,P1 — Personal outreach + 20% loyalty discount,Personal call — address bad experience before any offer,3.3
+da122df9eeddfedc1dc1f5349a1a690c,At-Risk,7571.63,515,2,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+dc4802a71eae9be1dd28f5d788ceb526,At-Risk,6929.31,563,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+ff4159b92c40ebe40454e3e6a7c35ed6,At-Risk,6726.66,462,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+4007669dec559734d6f53e029e360987,At-Risk,6081.54,278,1,1.0,P1 — Personal outreach + 20% loyalty discount,Personal call — address bad experience before any offer,3.3
+eebb5dda148d3893cdaf5b5ca3040ccb,At-Risk,4764.34,498,1,4.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.6
+edf81e1f3070b9dac83ec83dacdbb9bc,At-Risk,4194.76,498,1,2.0,P1 — Personal outreach + 20% loyalty discount,Personal call — address bad experience before any offer,3.2
+5e713be0853d8986528d7869a0811d2b,At-Risk,4042.74,571,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+011875f0176909c5cf0b14a9138bb691,At-Risk,4016.91,529,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+5d09b0d82126457e2a8ebfb9c9a1ffc4,At-Risk,3736.22,565,1,4.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.6
+931eabdf0636b8fd60369a8d759917d6,At-Risk,3666.42,476,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+03796b63235e0e0a299084988c662c7e,At-Risk,3602.47,554,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+59d66d72939bc9497e19d89c61a96d5f,At-Risk,3559.99,384,2,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+6f00d356a4be20527662aaf12116baab,At-Risk,3184.55,282,1,2.0,P1 — Personal outreach + 20% loyalty discount,Personal call — address bad experience before any offer,3.5
+c6111f70f40b3420e387493c627c27fa,At-Risk,3126.5,323,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",4.1
+895617ab63a9ad8881d9470f7427cd25,At-Risk,3126.5,328,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",4.1
+ff0ae98646e7bbb41cf0f0d3991fef98,At-Risk,3048.27,450,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+0f75637a7e2f7b6ae43665d1f7d0ca5d,At-Risk,3044.12,539,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+2ae8173a688e326821403a5b7a6858c2,At-Risk,3042.36,527,1,4.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.6
+6172bd5b7f52ade8c6c4548b448ff54f,At-Risk,3041.73,419,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+ea984b06b18cc6905bc2f9b0a3d1c986,At-Risk,3024.08,520,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+ee2bb06c1d3f368e92084edefb7e4b57,At-Risk,3016.01,575,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+ae04948ad7210ea76801b331080e0b3a,At-Risk,3009.53,511,1,4.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.6
+d9f8d6be11fb416742c9e35e725303f7,At-Risk,2938.17,282,1,3.0,P1 — Personal outreach + 20% loyalty discount,Email + SMS — standard multi-channel,3.7
+5599df2eeb9e2e4f377db24e09cb976f,At-Risk,2913.47,302,1,3.0,P1 — Personal outreach + 20% loyalty discount,Email + SMS — standard multi-channel,3.7
+c21e93b1d7b7a416d0f36fa6ebc1d60a,At-Risk,2827.0,470,1,1.0,P1 — Personal outreach + 20% loyalty discount,Personal call — address bad experience before any offer,3.0
+030a810edeec1ceea314282513023587,At-Risk,2794.5,477,1,2.0,P1 — Personal outreach + 20% loyalty discount,Personal call — address bad experience before any offer,3.2
+81d8bf17c9e450228efeedd2603edfaa,At-Risk,2784.16,429,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+ec5d2f91c651ce345616c7035fab6f9d,At-Risk,2759.88,275,1,1.0,P1 — Personal outreach + 20% loyalty discount,Personal call — address bad experience before any offer,3.3
+1e7097be947ad5d0f7819bdc9d8d7d0e,At-Risk,2751.24,510,1,1.0,P1 — Personal outreach + 20% loyalty discount,Personal call — address bad experience before any offer,3.0
+0de97ff655abfc142ba6fc83e86bf082,At-Risk,2734.66,270,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",4.1
+149b43a4776ea0a773ac75bc58830fb9,At-Risk,2734.11,437,1,1.0,P1 — Personal outreach + 20% loyalty discount,Personal call — address bad experience before any offer,3.0
+c949c73b1318491d6b5b117acb3e24a4,At-Risk,2681.29,453,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+bb149f7e7bfee3d984e265d0eae6181b,At-Risk,2681.29,450,1,4.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.6
+69e4e534ba5e6a8124d132b271923148,At-Risk,2627.09,430,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+7814db11654d2bf3b43bae828b6eee05,At-Risk,2606.01,510,1,4.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.6
+d8f1c3ed0de527caf0a7eceeb025b583,At-Risk,2574.38,529,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+84056c11d63b679a61f195ef043505f4,At-Risk,2487.24,397,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+575fa0cb05146c256ec1c9d348ec0305,At-Risk,2480.58,385,1,3.0,P1 — Personal outreach + 20% loyalty discount,Email + SMS — standard multi-channel,3.4
+5dff3703f9d82688ab5a1c92df1e4b18,At-Risk,2467.33,305,1,1.0,P1 — Personal outreach + 20% loyalty discount,Personal call — address bad experience before any offer,3.3
+d3ef55d6de8e4be1d4b905e8169224b5,At-Risk,2452.12,272,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",4.1
+d77aa95864ae5b42160937615628723a,At-Risk,2450.1,365,2,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",4.1
+24c0598e5978021ede868fbf7526544a,At-Risk,2429.68,278,1,4.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.9
+98133dfcdb0c24fa03c9eb4f0d69a6c4,At-Risk,2416.0,277,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",4.1
+86df00dc5fd68f4dd5d5945ca19f3ed6,At-Risk,2400.48,320,3,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",4.1
+c53a15252bb69a238a59b79c58a84bcf,At-Risk,2338.48,282,1,1.0,P1 — Personal outreach + 20% loyalty discount,Personal call — address bad experience before any offer,3.3
+8bce6306eb006a2ff6135ba36d33d644,At-Risk,2324.99,516,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+ec4b05ce75316354ba9b297f64377ed6,At-Risk,2288.31,480,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",3.8
+03adb96012772d4374285b6a701f3da9,At-Risk,2269.98,381,1,5.0,P1 — Personal outreach + 20% loyalty discount,"Email — positive experience, likely to respond",4.1
+698e1cf81d01a3d389d96145f7fa6df8,At-Risk,2262.8,371,1,0.0,P1 — Personal outreach + 20% loyalty discount,"Email — no review history, no negative signal",3.7
