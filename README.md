@@ -21,7 +21,7 @@ ranked retention action list ready for a marketing team to act on today.
 
 ## Dashboard
 
-![Dashboard](docs/dashboard_screenshot.png)
+![Dashboard](docs/dashboard.png)
 
 | Metric | Value |
 |--------|-------|
